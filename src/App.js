@@ -7,7 +7,6 @@ class App extends React.Component {
     // const cardName = 'Pikachu';
     return (
       <div>
-        <h1>Tryunfo</h1>
         <Form />
         <Card />
       </div>
