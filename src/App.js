@@ -3,6 +3,7 @@ import Form from './components/Form';
 
 class App extends React.Component {
   render() {
+    // const cardName = 'Pikachu';
     return (
       <div>
         <h1>Tryunfo</h1>
