@@ -3,12 +3,57 @@ import Card from './components/Card';
 import Form from './components/Form';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      description: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      image: '',
+      rare: 'normal',
+      trunfo: false,
+    };
+    this.onInputChange = this.onInputChange.bind(this);
+  }
+
+  onInputChange(event) {
+    const { type, checked, value } = event.target;
+    const valor = type === 'checkbox' ? checked : value;
+    this.setState({
+      [event.target.name]: valor,
+    });
+  }
+
   render() {
-    // const cardName = 'Pikachu';
+    const { name, description, attr1, attr2, attr3, image, rare, trunfo } = this.state;
     return (
       <div>
-        <Form />
-        <Card />
+        <h1>Super Tryunfo</h1>
+        <Form
+          cardName={ name }
+          cardDescription={ description }
+          cardAttr1={ attr1 }
+          cardAttr2={ attr2 }
+          cardAttr3={ attr3 }
+          cardImage={ image }
+          cardRare={ rare }
+          cardTrunfo={ trunfo }
+          onInputChange={ this.onInputChange }
+        />
+        <h2>Vizualizção do Card</h2>
+        <Card
+          cardName={ name }
+          cardDescription={ description }
+          cardAttr1={ attr1 }
+          cardAttr2={ attr2 }
+          cardAttr3={ attr3 }
+          cardImage={ image }
+          cardRare={ rare }
+          cardTrunfo={ trunfo }
+          onInputChange={ this.onInputChange }
+        />
       </div>
     );
   }
