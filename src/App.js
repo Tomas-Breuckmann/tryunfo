@@ -33,7 +33,8 @@ class App extends React.Component {
   onSaveButtonClick(event) {
     event.preventDefault();
     console.log(this.state);
-    const { name, description, image, attr1, attr2, attr3, rare, trunfo, savedCards } = this.state;
+    const { name, description, image, attr1, attr2, attr3, rare, trunfo,
+      savedCards } = this.state;
     const atualCard = {
       name,
       description,
