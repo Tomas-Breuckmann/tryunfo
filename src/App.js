@@ -1,6 +1,8 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import './App.css';
+import MostraCards from './components/MostraCards';
 
 class App extends React.Component {
   constructor() {
@@ -8,9 +10,9 @@ class App extends React.Component {
     this.state = {
       name: '',
       description: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
       image: '',
       rare: 'normal',
       trunfo: false,
@@ -48,9 +50,9 @@ class App extends React.Component {
     this.setState({
       name: '',
       description: '',
-      attr1: 0,
-      attr2: 0,
-      attr3: 0,
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
       image: '',
       rare: 'normal',
       trunfo: false,
@@ -88,35 +90,42 @@ class App extends React.Component {
 
   render() {
     const { name, description, attr1, attr2, attr3, image,
-      rare, trunfo, saveButton } = this.state;
+      rare, trunfo, saveButton, savedCards } = this.state;
     return (
       <div>
-        <h1>Super Tryunfo</h1>
-        <Form
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ trunfo }
-          onInputChange={ this.onInputChange }
-          isSaveButtonDisabled={ saveButton }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <h2>Vizualizção do Card</h2>
-        <Card
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ trunfo }
-          onInputChange={ this.onInputChange }
-        />
+        <h1 className="header">Super Tryunfo</h1>
+        <main className="main">
+          <Form
+            cardName={ name }
+            cardDescription={ description }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            cardImage={ image }
+            cardRare={ rare }
+            cardTrunfo={ trunfo }
+            onInputChange={ this.onInputChange }
+            isSaveButtonDisabled={ saveButton }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <br />
+          <hr />
+          <br />
+          <h2>Vizualizção do Card</h2>
+          <Card
+            cardName={ name }
+            cardDescription={ description }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            cardImage={ image }
+            cardRare={ rare }
+            cardTrunfo={ trunfo }
+            onInputChange={ this.onInputChange }
+          />
+        </main>
+        <h2>Mostra Cards</h2>
+        <MostraCards savedCards={ savedCards } />
       </div>
     );
   }
