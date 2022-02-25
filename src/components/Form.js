@@ -7,7 +7,7 @@ class Form extends React.Component {
     const { cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare } = this.props;
     const { cardTrunfo, onSaveButtonClick, isSaveButtonDisabled } = this.props;
     return (
-      <div>
+      <form onSubmit={ onSaveButtonClick }>
         {/* Nome */}
         <label htmlFor="name">
           Nome:
@@ -39,6 +39,8 @@ class Form extends React.Component {
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            // min="1"
+            // max="90"
           />
         </label>
         <label htmlFor="atributo2">
@@ -49,6 +51,8 @@ class Form extends React.Component {
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            min="1"
+            max="90"
           />
         </label>
         <label htmlFor="atributo3">
@@ -59,6 +63,8 @@ class Form extends React.Component {
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            min="1"
+            max="90"
           />
         </label>
         {/* Imagem */}
@@ -99,14 +105,13 @@ class Form extends React.Component {
         </label>
         <button
           name="salvar"
-          type="button"
+          type="submit"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
         >
           Salvar
         </button>
-      </div>
+      </form>
     );
   }
 }

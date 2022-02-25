@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 
 class Card extends React.Component {
   render() {
-    const { cardName, cardDescription } = this.props;
-    const { cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare } = this.props;
-    const { cardTrunfo } = this.props;
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
+      cardImage, cardRare, cardTrunfo } = this.props;
 
     return (
       <div>
