@@ -15,7 +15,7 @@ class App extends React.Component {
       rare: 'normal',
       trunfo: false,
       saveButton: true,
-      // savedCards: [],
+      savedCards: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -32,7 +32,31 @@ class App extends React.Component {
 
   onSaveButtonClick(event) {
     event.preventDefault();
-    console.log('2');
+    console.log(this.state);
+    const { name, description, image, attr1, attr2, attr3, rare, trunfo, savedCards } = this.state;
+    const atualCard = {
+      name,
+      description,
+      image,
+      attr1,
+      attr2,
+      attr3,
+      rare,
+      trunfo,
+    };
+    this.setState({
+      name: '',
+      description: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      image: '',
+      rare: 'normal',
+      trunfo: false,
+      saveButton: true,
+      savedCards: [...savedCards, atualCard],
+    });
+    console.log(this.state);
   }
 
   validacaoForm= () => {
@@ -41,17 +65,6 @@ class App extends React.Component {
     const nameV = name.length > 0; // V de validation, preciso que retorne false
     const descriptionV = description.length > 0;
     const imageV = image.length > 0;
-    // if (nameV && descriptionV && imageV) {
-    //   const max = 90;
-    //   const maxSoma = 120;
-    //   const at1 = parseInt(attr1, 10);
-    //   const at2 = parseInt(attr2, 10);
-    //   const at3 = parseInt(attr3, 10);
-    //   const limiteTotal = at1 + at2 + at3 <= maxSoma;
-    //   const limiteMin = at1 > 0 && at2 > 0 && at3 > 0;
-    //   const limiteMax = at1 <= max && at2 <= max && at3 <= max;
-    //   if (limiteTotal && limiteMin && limiteMax) validacao = false;
-    // }
     const max = 90;
     const maxSoma = 210;
     const at1 = parseInt(attr1, 10);
