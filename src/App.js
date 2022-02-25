@@ -52,12 +52,12 @@ class App extends React.Component {
     //   const limiteMax = at1 <= max && at2 <= max && at3 <= max;
     //   if (limiteTotal && limiteMin && limiteMax) validacao = false;
     // }
-      const max = 90;
-      const maxSoma = 210;
-      const at1 = parseInt(attr1, 10);
-      const at2 = parseInt(attr2, 10);
-      const at3 = parseInt(attr3, 10);
-      const soma = at1 + at2 + at3;
+    const max = 90;
+    const maxSoma = 210;
+    const at1 = parseInt(attr1, 10);
+    const at2 = parseInt(attr2, 10);
+    const at3 = parseInt(attr3, 10);
+    const soma = at1 + at2 + at3;
     if (nameV
       && descriptionV
       && imageV
