@@ -16,6 +16,7 @@ class App extends React.Component {
       image: '',
       rare: 'normal',
       trunfo: false,
+      hasTrunfo: false,
       saveButton: true,
       savedCards: [],
     };
@@ -34,7 +35,6 @@ class App extends React.Component {
 
   onSaveButtonClick(event) {
     event.preventDefault();
-    console.log(this.state);
     const { name, description, image, attr1, attr2, attr3, rare, trunfo,
       savedCards } = this.state;
     const atualCard = {
@@ -48,6 +48,9 @@ class App extends React.Component {
       trunfo,
     };
     this.setState({
+      savedCards: [...savedCards, atualCard],
+    }, this.findTrunfoPresence);
+    this.setState({
       name: '',
       description: '',
       attr1: '0',
@@ -57,9 +60,14 @@ class App extends React.Component {
       rare: 'normal',
       trunfo: false,
       saveButton: true,
-      savedCards: [...savedCards, atualCard],
     });
-    console.log(this.state);
+    // this.setState({ hasTrunfo: savedCards.some((card) => card.trunfo === true) });
+  }
+
+  findTrunfoPresence= () => {
+    const { savedCards } = this.state;
+    console.log(savedCards);
+    this.setState({ hasTrunfo: savedCards.some((card) => card.trunfo === true) });
   }
 
   validacaoForm= () => {
@@ -90,7 +98,7 @@ class App extends React.Component {
 
   render() {
     const { name, description, attr1, attr2, attr3, image,
-      rare, trunfo, saveButton, savedCards } = this.state;
+      rare, trunfo, hasTrunfo, saveButton, savedCards } = this.state;
     return (
       <div>
         <h1 className="header">Super Tryunfo</h1>
@@ -104,6 +112,7 @@ class App extends React.Component {
             cardImage={ image }
             cardRare={ rare }
             cardTrunfo={ trunfo }
+            hasTrunfo={ hasTrunfo }
             onInputChange={ this.onInputChange }
             isSaveButtonDisabled={ saveButton }
             onSaveButtonClick={ this.onSaveButtonClick }

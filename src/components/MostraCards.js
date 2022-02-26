@@ -18,7 +18,7 @@ class MostraCards extends React.Component {
               <p>{ attr2 }</p>
               <p>{ attr3 }</p>
               <p>{ rare }</p>
-              <p>{ trunfo }</p>
+              <p>{ trunfo ? 'Super trunfo' : '' }</p>
             </div>);
         })}
       </div>
