@@ -61,12 +61,21 @@ class App extends React.Component {
       trunfo: false,
       saveButton: true,
     });
-    // this.setState({ hasTrunfo: savedCards.some((card) => card.trunfo === true) });
+  }
+
+  deleteCard = (event) => {
+    const { savedCards } = this.state;
+    // console.log(event.target.name);
+    // console.log(event.target.name === '0');
+    // console.log(savedCards.some((card, index) => index !== parseInt(event.target.name, 10)));
+    this.setState({
+      savedCards: savedCards.filter((card, index) => index !== parseInt(event.target.name, 10)),
+    }, this.findTrunfoPresence);
   }
 
   findTrunfoPresence= () => {
     const { savedCards } = this.state;
-    console.log(savedCards);
+    // console.log(savedCards);
     this.setState({ hasTrunfo: savedCards.some((card) => card.trunfo === true) });
   }
 
@@ -134,7 +143,10 @@ class App extends React.Component {
           />
         </main>
         <h2>Mostra Cards</h2>
-        <MostraCards savedCards={ savedCards } />
+        <MostraCards
+          savedCards={ savedCards }
+          deleteCard={ this.deleteCard }
+        />
       </div>
     );
   }
