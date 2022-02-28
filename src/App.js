@@ -8,7 +8,7 @@ import Header from './components/Header';
 class App extends React.Component {
   constructor() {
     super();
-    const cardsArmazenados = JSON.parse(localStorage.getItem('cards'));
+    // const cardsArmazenados = JSON.parse(localStorage.getItem('cards'));
     this.state = {
       name: '',
       description: '',
@@ -20,7 +20,8 @@ class App extends React.Component {
       trunfo: false,
       hasTrunfo: false,
       saveButton: true,
-      savedCards: cardsArmazenados !== null ? cardsArmazenados : [],
+      // savedCards: cardsArmazenados !== null ? cardsArmazenados : [],
+      savedCards: [],
       filterName: '',
     };
     this.onInputChange = this.onInputChange.bind(this);
