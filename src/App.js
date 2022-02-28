@@ -63,13 +63,14 @@ class App extends React.Component {
     });
   }
 
-  deleteCard = (event) => {
+  deleteCard = (e) => {
     const { savedCards } = this.state;
     // console.log(event.target.name);
     // console.log(event.target.name === '0');
     // console.log(savedCards.some((card, index) => index !== parseInt(event.target.name, 10)));
+    const filtrado = savedCards.filter((cd, ind) => ind !== parseInt(e.target.name, 10));
     this.setState({
-      savedCards: savedCards.filter((card, index) => index !== parseInt(event.target.name, 10)),
+      savedCards: filtrado,
     }, this.findTrunfoPresence);
   }
 

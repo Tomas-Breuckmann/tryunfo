@@ -19,7 +19,14 @@ class MostraCards extends React.Component {
               <p>{ attr3 }</p>
               <p>{ rare }</p>
               <p>{ trunfo ? 'Super trunfo' : '' }</p>
-              <button data-testid="delete-button" type="button" name={ index } onClick={ deleteCard }>Excluir</button>
+              <button
+                data-testid="delete-button"
+                type="button"
+                name={ index }
+                onClick={ deleteCard }
+              >
+                Excluir
+              </button>
             </div>);
         })}
       </div>
