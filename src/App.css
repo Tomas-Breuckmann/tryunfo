@@ -6,8 +6,12 @@
 
 .header {
   background-color: burlywood;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
+}
+
+.header > h1 {
+  padding: 10px;
 }
 
 .main {
@@ -20,10 +24,6 @@
   margin: 20px;
   padding: 20px;
 }
-
-/* h2 {
-  background-color: burlywood;
-} */
 
 .cada-card {
   background-color: rgb(197, 189, 189);

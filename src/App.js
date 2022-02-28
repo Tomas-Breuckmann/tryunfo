@@ -3,10 +3,12 @@ import Card from './components/Card';
 import Form from './components/Form';
 import './App.css';
 import MostraCards from './components/MostraCards';
+import Header from './components/Header';
 
 class App extends React.Component {
   constructor() {
     super();
+    const cardsArmazenados = JSON.parse(localStorage.getItem('cards'));
     this.state = {
       name: '',
       description: '',
@@ -18,7 +20,8 @@ class App extends React.Component {
       trunfo: false,
       hasTrunfo: false,
       saveButton: true,
-      savedCards: [],
+      savedCards: cardsArmazenados !== null ? cardsArmazenados : [],
+      filterName: '',
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -76,8 +79,13 @@ class App extends React.Component {
 
   findTrunfoPresence= () => {
     const { savedCards } = this.state;
-    // console.log(savedCards);
-    this.setState({ hasTrunfo: savedCards.some((card) => card.trunfo === true) });
+    const verT = savedCards.some((card) => card.trunfo === true);
+    this.setState({ hasTrunfo: verT }, this.salvaNoStorage);
+  }
+
+  salvaNoStorage = () => {
+    const { savedCards } = this.state;
+    localStorage.setItem('cards', JSON.stringify(savedCards));
   }
 
   validacaoForm= () => {
@@ -108,10 +116,10 @@ class App extends React.Component {
 
   render() {
     const { name, description, attr1, attr2, attr3, image,
-      rare, trunfo, hasTrunfo, saveButton, savedCards } = this.state;
+      rare, trunfo, hasTrunfo, saveButton, savedCards, filterName } = this.state;
     return (
       <div>
-        <h1 className="header">Super Tryunfo</h1>
+        <Header filterName={ filterName } onInputChange={ this.onInputChange } />
         <main className="main">
           <Form
             cardName={ name }
@@ -147,6 +155,7 @@ class App extends React.Component {
         <MostraCards
           savedCards={ savedCards }
           deleteCard={ this.deleteCard }
+          filterName={ filterName }
         />
       </div>
     );
