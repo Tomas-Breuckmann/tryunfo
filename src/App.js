@@ -24,6 +24,7 @@ class App extends React.Component {
       savedCards: [],
       filterName: '',
       filterRare: 'todas',
+      filterTrunfo: false,
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -119,12 +120,13 @@ class App extends React.Component {
   render() {
     const { name, description, attr1, attr2, attr3, image,
       rare, trunfo, hasTrunfo, saveButton, savedCards,
-      filterName, filterRare } = this.state;
+      filterName, filterRare, filterTrunfo } = this.state;
     return (
       <div>
         <Header
           filterName={ filterName }
           filterRare={ filterRare }
+          filterTrunfo={ filterTrunfo }
           onInputChange={ this.onInputChange }
         />
         <main className="main">
@@ -164,6 +166,7 @@ class App extends React.Component {
           deleteCard={ this.deleteCard }
           filterName={ filterName }
           filterRare={ filterRare }
+          filterTrunfo={ filterTrunfo }
         />
       </div>
     );

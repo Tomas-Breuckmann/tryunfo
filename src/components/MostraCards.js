@@ -4,14 +4,19 @@ import PropTypes from 'prop-types';
 
 class MostraCards extends React.Component {
   render() {
-    const { savedCards, deleteCard, filterName, filterRare } = this.props;
-    const savedCardsF = (filterRare !== 'todas' ? savedCards
-      .filter(({ rare }) => rare === filterRare) : savedCards);
-    // savedCards = savedCards.filter((card) => card.rare === filterRare);
+    const { savedCards, deleteCard, filterName, filterRare, filterTrunfo } = this.props;
+    const savedCardsRare = (filterRare !== 'todas' ? savedCards
+      .filter(({ rare }) => rare === filterRare) : savedCards); // filtra por raridade
+    const savedCardsNames = savedCardsRare
+      .filter(({ name }) => name.includes(filterName)); // filtra pelo nome
+    const savedCardsTrunfo = filterTrunfo && savedCards
+      .filter(({ trunfo }) => trunfo === true);
+    const savedCardsRender = filterTrunfo ? savedCardsTrunfo : savedCardsNames;
+    // const savedCardsRender = savedCardsNames;
     return (
       <div className="mostra-cards">
-        {savedCardsF
-          .filter((cardObject) => cardObject.name.includes(filterName))
+        {savedCardsRender
+          // .filter((cardObject) => cardObject.name.includes(filterName)) // filtra pelo nome
           .map((cardObject, index) => {
             const { name, description, image, attr1, attr2, attr3, rare,
               trunfo } = cardObject;
@@ -47,6 +52,7 @@ MostraCards.propTypes = {
   deleteCard: PropTypes.func.isRequired,
   filterName: PropTypes.string.isRequired,
   filterRare: PropTypes.string.isRequired,
+  filterTrunfo: PropTypes.bool.isRequired,
 };
 
 export default MostraCards;

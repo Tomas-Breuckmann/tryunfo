@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Header extends React.Component {
   render() {
-    const { filterName, filterRare, onInputChange } = this.props;
+    const { filterName, filterRare, filterTrunfo, onInputChange } = this.props;
     return (
       <header className="header">
         <h1>Super Tryunfo</h1>
@@ -31,6 +31,16 @@ class Header extends React.Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
+        <label htmlFor="filterTrunfo">
+          Super Trunfo?
+          <input
+            name="filterTrunfo"
+            type="checkbox"
+            data-testid="trunfo-filter"
+            checked={ filterTrunfo }
+            onChange={ onInputChange }
+          />
+        </label>
       </header>
     );
   }
@@ -39,6 +49,7 @@ class Header extends React.Component {
 Header.propTypes = {
   filterName: PropTypes.string.isRequired,
   filterRare: PropTypes.string.isRequired,
+  filterTrunfo: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
 };
 
