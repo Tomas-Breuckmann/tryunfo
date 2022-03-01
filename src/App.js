@@ -23,6 +23,7 @@ class App extends React.Component {
       // savedCards: cardsArmazenados !== null ? cardsArmazenados : [],
       savedCards: [],
       filterName: '',
+      filterRare: 'todas',
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -117,10 +118,15 @@ class App extends React.Component {
 
   render() {
     const { name, description, attr1, attr2, attr3, image,
-      rare, trunfo, hasTrunfo, saveButton, savedCards, filterName } = this.state;
+      rare, trunfo, hasTrunfo, saveButton, savedCards,
+      filterName, filterRare } = this.state;
     return (
       <div>
-        <Header filterName={ filterName } onInputChange={ this.onInputChange } />
+        <Header
+          filterName={ filterName }
+          filterRare={ filterRare }
+          onInputChange={ this.onInputChange }
+        />
         <main className="main">
           <Form
             cardName={ name }
@@ -157,6 +163,7 @@ class App extends React.Component {
           savedCards={ savedCards }
           deleteCard={ this.deleteCard }
           filterName={ filterName }
+          filterRare={ filterRare }
         />
       </div>
     );
