@@ -147,7 +147,6 @@ class App extends React.Component {
           <br />
           <hr />
           <br />
-          <h2>Vizualizção do Card</h2>
           <Card
             cardName={ name }
             cardDescription={ description }

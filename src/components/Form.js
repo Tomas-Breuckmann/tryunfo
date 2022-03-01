@@ -7,7 +7,7 @@ class Form extends React.Component {
       cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo,
       onSaveButtonClick, isSaveButtonDisabled } = this.props;
     return (
-      <form onSubmit={ onSaveButtonClick }>
+      <form onSubmit={ onSaveButtonClick } className="main-form">
         {/* Nome */}
         <label htmlFor="name">
           Nome:
